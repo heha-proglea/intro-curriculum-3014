@@ -2,25 +2,51 @@
 <html lang="ja">
 <head>
 	<meta charset="UTF-8">
-	<title>アンケート</title>
-	<!-- <link rel="stylesheet" href="style.css"> -->
+	<title>アンケート | yaki vs shabu</title>
+	<link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
+<div class="wrapper">
+		<!-- ヘッダーここから -->
+		<header class="header">
+			<nav class="nav">
+				<ul>
+					<li><a href="index.html">Home</a></li>
+					<li><a href="about.html">概要</a></li>
+					<li><a href="form.html">アンケート</a></li>
+					<li><a href="contact.html">お問い合わせ</a></li>
+				</ul>
+			</nav>
+		</header>
+		<!-- ヘッダーここまで -->
+		<!-- メインここから -->
 	<main>
-		<h1>どちらが食べたいですか？</h1>
+		<h1 class="enquetes-title">焼き肉vsしゃぶしゃぶ アンケート</h1>
+
 		<form method="post" action="/enquetes/yaki-shabu">
-			お名前<br>
-			<input type="text" name="name">
-			<label>
-				<input type="radio" name="yaki-shabu" value="焼き肉" checked/> 焼き肉
-			</label>
-			<label>
-				<input type="radio" name="yaki-shabu" value="しゃぶしゃぶ" /> しゃぶしゃぶ
-			</label>
-			<button type="submit">投稿</button>
+			<div>
+				<label>お名前<br>
+				<input type="text" name="name"placeholder="your name"></label>
+			</div>
+			<div>
+				焼き肉としゃぶしゃぶ、どちらが食べたいですか？<br>
+				<label><input type="radio" name="yaki-shabu" value="焼き肉" checked/> 焼き肉</label>
+				<label><input type="radio" name="yaki-shabu" value="しゃぶしゃぶ" /> しゃぶしゃぶ</label>
+			</div>
+			<div>
+				<button type="submit" name="submit" value="send" class="square_btn">送信</button>
+			</div>
+
 		</form>
 	</main>
+    <!-- メインここまで -->
+    <!-- フッターここから -->
+    <footer class="footer">
+			<!-- <p>ここにいい感じのフッターを書きます</p> -->
+		</footer>
+	<!-- フッターここまで -->
+</div>
 </body>
 
 </html>
