@@ -8,8 +8,33 @@ const server = http.createServer((req, res) => {
 	// アクセスログの出力
 	const now = new Date();
 	console.info('[' + now + '] Requested by ' + req.connection.remoteAddress); // req.cone...→リクエストが送られたIP情報
+
+	let url = req.url; //リクエストからURLを取得
+	console.log('url -> ' + url);
+	// 「/」に対するリクエストには index.html を返す
+	if(url === '/') {
+	// url = '/index.html';
+	url = '/form.html';
+	}
+	const fileNameArray = url.split('.'); //splitで . で区切られた配列にする 
+	const ext = fileNameArray[fileNameArray.length - 1]; //tmp配列の最後の要素(外部ファイルの拡張子)を取得
+	console.log('ext -> ' + ext);
+	
+	// 拡張子をキーにContent-Typeを得るための連想配列を定義しておく
+	const extToType = {
+		'html': 'html',
+		'js'  : 'javascript',
+		'css' : 'css'
+	};
+	console.log('extToType[ext] -> ' + extToType[ext]);
+
+	// Content-Typeが分かればそれに、分からなければプレーンテキストとして返す
+	const type = extToType[ext] || 'plain';
+	console.log('type -> ' + type);
+	console.log('content-type -> ' + `text/${type}; charset=utf-8` );
+	// HTTP200として返答する
 	res.writeHead(200, {
-		'Content-Type': 'text/html; charset=utf-8'
+		'Content-Type': `text/${type}; charset=utf-8` // 変数展開を用いてContent-Typeを指定
 	});
 
 	switch (req.method) {
@@ -17,7 +42,7 @@ const server = http.createServer((req, res) => {
 		case 'GET':
 			// form.htmlの内容を、レスポンスのコンテンツに返す
 			const fs = require('fs');
-			const rs = fs.createReadStream('./form.html');// ファイルの読み込み、Streamを作成
+			const rs = fs.createReadStream(`.${url}`);// ファイルの読み込み、Streamを作成
 			rs.pipe(res);// 読み取り用Stream:rsデータを、書き込み用Stream:res(レスポンスオブジェクト)に渡す(=pipe関数によるパイプ)
 			break;
 			// ※ pipe関数を使った場合、 res.end(); しなくてよい
