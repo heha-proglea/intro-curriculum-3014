@@ -1,0 +1,78 @@
+@charset "UTF-8";
+
+/* すべてのWebページに適用される */
+html {
+    font-family: sans-serif;
+}
+body {
+    margin: 0; /* [上下左右]指定 */
+    background-color: #eeece9;
+}
+
+/* すべてのページに適用 - ヘッダー - */
+.nav li {
+    display: inline;
+    list-style-type: none;
+    padding-right: 30px;
+}
+.nav ul {
+    margin: 0;
+    padding: 20px 10px 15px 20px;
+}
+.nav a:link {
+    color: #3c454d;
+    text-decoration: none;
+}
+.nav a:visited {
+    color: #3c454d;
+    text-decoration: none;
+}
+.nav a:hover {
+    color: #7b8dac;
+    /* margin: 30px 30px; */
+    /* padding: 10px; */
+    border-bottom: medium solid #6B92DE;
+}
+
+
+/* form.html */
+.enquetes-title {
+    position: relative;
+    padding: 0.6em;
+    background: #b3d2fc;
+    border-radius: 4px;/* 角丸の指定 */
+}
+.enquetes-title:after {
+    position: absolute;
+    content: '';
+    top: 100%;
+    left: 30px;
+    border: 15px solid transparent;
+    border-top: 15px solid #b3d2fc;
+    width: 0;
+    height: 0;
+}
+form div {
+    /* border: solid 3px #B7CEFB;線色 */
+    padding: 0.5em;/*文字周りの余白*/
+    /* border-radius: 0.5em;角丸 */
+}
+.square_btn {
+    display: inline-block;
+    padding: 0.5em 2em;/* 縦横の余白を指定(=ボタンサイズの変更) */
+    text-decoration: none;
+    background: #78afe2;/*ボタン色*/
+    color: #FFF;
+    border-bottom: solid 3px #2e3552;
+    border-radius: 5px;/* 角丸の指定 */
+}
+.square_btn:hover {/*ボタンにホバーした時*/
+    background: #42557a;/*ボタン色*/
+}
+.square_btn:active {/*ボタンを押したとき*/
+    -ms-transform: translateY(4px);
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);/*下に動く*/
+    border-bottom: none;/*線を消す*/
+}
+
