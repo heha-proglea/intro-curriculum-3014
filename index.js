@@ -1,6 +1,7 @@
 'use strict';
-// HTTPモジュールの読み込み
+// 各種モジュールの読み込み
 const http = require('http');
+const fs = require('fs');
 
 // サーバーの作成
 const server = http.createServer((req, res) => {
@@ -40,12 +41,27 @@ const server = http.createServer((req, res) => {
 	switch (req.method) {
 		// reqオブジェクトHTTPメソッドreq.methodの文字列値に応じて条件分岐
 		case 'GET':
-			// form.htmlの内容を、レスポンスのコンテンツに返す
-			const fs = require('fs');
-			const rs = fs.createReadStream(`.${url}`);// ファイルの読み込み、Streamを作成
-			rs.pipe(res);// 読み取り用Stream:rsデータを、書き込み用Stream:res(レスポンスオブジェクト)に渡す(=pipe関数によるパイプ)
+			// urlで指定されたファイルの内容を、レスポンスのコンテンツに返す
+
+			// const rs = fs.createReadStream(`.${url}`);// ファイルの読み込み、Streamを作成
+			// rs.pipe(res);// 読み取り用Stream:rsデータを、書き込み用Stream:res(レスポンスオブジェクト)に渡す(=pipe関数によるパイプ)
+			// break;
+			// // ※ pipe関数を使った場合、 res.end(); しなくてよい
+
+
+			console.log('url now -> ' + `.${url}`);
+			fs.readFile(`.${url}`, 'utf-8', (error, filedata) => {
+				if (error) {
+					console.log('404 Error');
+					res.weiteHead(404);
+				} else {
+					// console.log(filedata);
+					res.write(filedata); // 読み込んだファイルデータの書き出し
+					res.end(); // ←Node.jsは非同期的なので、res.end()する場所に注意すること！
+					res.end(filedata); // 上記2行の代わりに、こちらでもファイルデータの書き出しができる。行われている処理は同じである(by公式ドキュメント)
+				}
+			})
 			break;
-			// ※ pipe関数を使った場合、 res.end(); しなくてよい
 		case 'POST':
 			// 追加で送られてくるデータに対する処理
 			let body = [];
