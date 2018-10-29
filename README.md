@@ -12,3 +12,6 @@ http://neos21.hatenablog.com/entry/2018/03/24/080000
 ←'css' : 'stylesheet'だと動かないので注意。'css' : 'css'とすること。  
 https://qiita.com/723ch/items/68ee87a64c9aeb60dd1b  
 
+# ？
+http://localhost:8000/  
+へ行くとアクセスできる。
