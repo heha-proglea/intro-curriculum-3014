@@ -15,3 +15,7 @@ https://qiita.com/723ch/items/68ee87a64c9aeb60dd1b
 # ？
 http://localhost:8000/  
 へ行くとアクセスできる。
+
+# できなかったこと
+- フォーム送信時に、各項目が空欄か確認して空欄ならjavascriptのalertをだす
+- アンケート入力結果を別のファイル(result.html)か何かに書き出して、index.jsではそれを参照するようにしたかった
