@@ -3,6 +3,9 @@
 
 を、大幅に改造した。
 
+# ブランチ
+master→with-comments→extend
+
 # 変更点
 - HTMLページを新たに追加
 - CSSファイルの作成
